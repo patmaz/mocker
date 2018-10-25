@@ -50,6 +50,15 @@ def root():
         data=mockData
     ), 200
 
+@app.route('/err', methods=['POST'])
+def err():
+    dataJson=request.get_json(request.data)
+    error=dataJson['error']
+    
+    return jsonify(
+        data="error"
+    ), error
+
 if __name__ == '__main__':
     app.debug=True
     app.run(port=5000)
